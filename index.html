@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Empress Creations | CRM & Business Systems</title>
+
+<style>
+:root{
+--bg:#000;
+--green:#00ff9f;
+--blue:#4FA1F6;
+--light:#ACE6FF;
+--teal:#0084A3;
+--text:#eaf2ff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui;}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{
+position:fixed;top:0;width:100%;
+display:flex;justify-content:space-between;
+padding:15px 25px;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+z-index:1000;
+border-bottom:1px solid rgba(0,255,159,0.2);
+}
+
+nav a{color:white;text-decoration:none;margin:0 10px;}
+nav a:hover{color:var(--green);}
+
+/* HERO */
+header{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 20px;
+}
+
+h1{
+font-size:56px;
+background:linear-gradient(90deg,var(--green),var(--blue));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+header p{color:#aaa;margin-top:10px;}
+
+.cta{
+margin-top:20px;
+padding:12px 24px;
+background:linear-gradient(90deg,var(--green),var(--teal));
+color:#000;
+border-radius:10px;
+text-decoration:none;
+font-weight:700;
+}
+
+/* SECTIONS */
+section{
+padding:100px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+h2{color:var(--green);margin-bottom:20px;}
+
+/* PROJECT GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.project{
+position:relative;
+height:220px;
+border-radius:14px;
+overflow:hidden;
+background:#0a0a0a;
+border:1px solid rgba(0,255,159,0.15);
+}
+
+.project img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.overlay{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+padding:15px;
+background:linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+}
+
+.btn{
+display:inline-block;
+margin-top:8px;
+padding:6px 10px;
+background:var(--green);
+color:#000;
+text-decoration:none;
+border-radius:6px;
+}
+
+/* CRM PREVIEW */
+.crm-preview{
+text-align:center;
+}
+
+.crm-preview img{
+width:100%;
+max-width:700px;
+border-radius:12px;
+margin-top:20px;
+}
+
+/* CONTACT */
+footer{
+text-align:center;
+padding:40px;
+color:#666;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div><b>Empress Creations</b></div>
+<div>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<header>
+<h1>We Build Business Systems</h1>
+<p>CRM platforms, dashboards and automation tools that scale companies.</p>
+<a class="cta" href="#projects">View Work</a>
+</header>
+
+<!-- CRM PREVIEW -->
+<section class="crm-preview">
+<h2>Custom CRM Systems</h2>
+<p style="color:#aaa; max-width:700px; margin:auto;">
+Try a live CRM system demo. This is the type of platform I build for businesses to manage leads, workflows and operations.
+</p>
+
+<img src="assets/hero-crm.png">
+
+<a class="cta" href="crm-demo.html">🚀 Launch Live CRM Demo</a>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+<h2>Projects</h2>
+
+<div class="grid">
+
+<div class="project">
+<img src="assets/projects/crm.jpg">
+<div class="overlay">
+<h3>Rilukey CRM</h3>
+<a class="btn" href="https://github.com/danielleneethling52-spec/Rilukey-Group-CRM">View</a>
+</div>
+</div>
+
+<div class="project">
+<img src="assets/projects/auction.jpg">
+<div class="overlay">
+<h3>Auction Platform</h3>
+<a class="btn" href="https://github.com/danielleneethling52-spec/Auction-App">View</a>
+</div>
+</div>
+
+<div class="project">
+<img src="assets/projects/wedding.jpg">
+<div class="overlay">
+<h3>Wedding System</h3>
+<a class="btn" href="https://github.com/danielleneethling52-spec/Wedding-App">View</a>
+</div>
+</div>
+
+<div class="project">
+<img src="assets/projects/crypto.jpg">
+<div class="overlay">
+<h3>Crypto Dashboard</h3>
+<a class="btn" href="https://github.com/danielleneethling52-spec/Crypto-Dashboard">View</a>
+</div>
+</div>
+
+<div class="project">
+<img src="assets/projects/rodtimber.jpg">
+<div class="overlay">
+<h3>Rod Timber</h3>
+<a class="btn" href="https://rodtimberproducts.co.za">Visit</a>
+</div>
+</div>
+
+<div class="project">
+<img src="assets/projects/goodwood.jpg">
+<div class="overlay">
+<h3>Goodwood RFC</h3>
+<a class="btn" href="https://goodwoodrfc.co.za">Visit</a>
+</div>
+</div>
+
+<div class="project">
+<img src="assets/projects/elite.jpg">
+<div class="overlay">
+<h3>Elite Appliances</h3>
+<a class="btn" href="https://eliteappliancetechnicians.co.za">Visit</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact</h2>
+<p>📞 073 308 6462</p>
+<p>📧 danielle.neethling52@gmail.com</p>
+</section>
+
+<footer>
+© 2026 Empress Creations
+</footer>
+
+</body>
+</html>
