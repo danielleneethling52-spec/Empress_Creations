@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM Dashboard | Empress Creations</title>
+
+<style>
+:root{
+--bg:#000;
+--panel:#0b0b0b;
+--border:rgba(0,255,159,0.15);
+--green:#00ff9f;
+--text:#eaf2ff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui;}
+
+body{
+background:var(--bg);
+color:var(--text);
+display:flex;
+min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+width:240px;
+background:#050505;
+border-right:1px solid var(--border);
+padding:20px;
+}
+
+.sidebar h2{
+color:var(--green);
+margin-bottom:20px;
+font-size:18px;
+}
+
+.sidebar button{
+width:100%;
+padding:10px;
+margin:6px 0;
+background:#111;
+border:none;
+color:white;
+text-align:left;
+cursor:pointer;
+border-radius:6px;
+transition:0.2s;
+}
+
+.sidebar button:hover{
+background:var(--green);
+color:#000;
+}
+
+/* MAIN */
+.main{
+flex:1;
+padding:25px;
+}
+
+/* HEADER */
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.header h1{
+font-size:22px;
+}
+
+.badge{
+padding:6px 10px;
+background:rgba(0,255,159,0.1);
+border:1px solid var(--border);
+border-radius:20px;
+font-size:12px;
+color:var(--green);
+}
+
+/* KPI GRID */
+.kpi-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:25px;
+}
+
+.card{
+background:var(--panel);
+border:1px solid var(--border);
+padding:15px;
+border-radius:10px;
+}
+
+.card h3{
+font-size:14px;
+color:#aaa;
+margin-bottom:8px;
+}
+
+.card .value{
+font-size:22px;
+color:var(--green);
+font-weight:bold;
+}
+
+/* PIPELINE */
+.pipeline{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.stage{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:10px;
+padding:12px;
+min-height:250px;
+}
+
+.stage h4{
+margin-bottom:10px;
+font-size:14px;
+color:var(--green);
+}
+
+.lead{
+background:#111;
+padding:10px;
+border-radius:6px;
+margin-bottom:8px;
+font-size:13px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.lead:hover{
+background:#1a1a1a;
+}
+
+/* INPUT */
+input{
+width:100%;
+padding:10px;
+margin:5px 0;
+background:#111;
+border:1px solid #222;
+color:white;
+border-radius:6px;
+}
+
+.btn{
+padding:10px 12px;
+background:var(--green);
+border:none;
+color:#000;
+font-weight:600;
+border-radius:6px;
+cursor:pointer;
+margin-top:8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<h2>CRM SYSTEM</h2>
+<button onclick="show('dashboard')">Dashboard</button>
+<button onclick="show('leads')">Leads</button>
+<button onclick="show('pipeline')">Pipeline</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- HEADER -->
+<div class="header">
+<h1>Business CRM Dashboard</h1>
+<div class="badge">LIVE DEMO ENVIRONMENT</div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="tab">
+
+<div class="kpi-grid">
+<div class="card">
+<h3>Total Leads</h3>
+<div class="value" id="leadCount">0</div>
+</div>
+
+<div class="card">
+<h3>Active Pipeline</h3>
+<div class="value">12</div>
+</div>
+
+<div class="card">
+<h3>Conversion Rate</h3>
+<div class="value">38%</div>
+</div>
+
+<div class="card">
+<h3>Monthly Revenue</h3>
+<div class="value">R124,500</div>
+</div>
+</div>
+
+</div>
+
+<!-- LEADS -->
+<div id="leads" class="tab" style="display:none;">
+
+<h2>Leads Management</h2>
+
+<input id="name" placeholder="Client Name">
+<input id="email" placeholder="Client Email">
+<button class="btn" onclick="addLead()">Add Lead</button>
+
+<ul id="list"></ul>
+
+</div>
+
+<!-- PIPELINE -->
+<div id="pipeline" class="tab" style="display:none;">
+
+<h2>Sales Pipeline</h2>
+
+<div class="pipeline">
+
+<div class="stage">
+<h4>New Leads</h4>
+<div id="new"></div>
+</div>
+
+<div class="stage">
+<h4>Contacted</h4>
+<div id="contacted"></div>
+</div>
+
+<div class="stage">
+<h4>Proposal</h4>
+<div id="proposal"></div>
+</div>
+
+<div class="stage">
+<h4>Closed Won</h4>
+<div id="closed"></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function show(tab){
+document.querySelectorAll('.tab').forEach(t=>t.style.display='none');
+document.getElementById(tab).style.display='block';
+}
+
+let leads=[
+{name:"ABC Construction",email:"abc@gmail.com",status:"new"},
+{name:"Elite Repairs",email:"elite@gmail.com",status:"contacted"},
+{name:"Rilukey Group",email:"info@rilukey.com",status:"proposal"}
+];
+
+function render(){
+
+document.getElementById('new').innerHTML='';
+document.getElementById('contacted').innerHTML='';
+document.getElementById('proposal').innerHTML='';
+document.getElementById('closed').innerHTML='';
+
+leads.forEach((l,i)=>{
+
+let el=document.createElement('div');
+el.className='lead';
+el.innerText=l.name;
+el.onclick=()=>move(i);
+
+document.getElementById(l.status).appendChild(el);
+
+});
+
+document.getElementById('leadCount').innerText=leads.length;
+
+}
+
+function addLead(){
+let n=document.getElementById('name').value;
+let e=document.getElementById('email').value;
+if(!n||!e)return;
+
+leads.push({name:n,email:e,status:'new'});
+render();
+}
+
+function move(i){
+
+let order=['new','contacted','proposal','closed'];
+let current=order.indexOf(leads[i].status);
+leads[i].status=order[(current+1)%4];
+render();
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>
