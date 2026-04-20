@@ -3,320 +3,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRM Dashboard | Empress Creations</title>
+<title>Empress CRM | Business System Solutions</title>
 
 <style>
 :root{
 --bg:#000;
+--green:#00ff9f;
+--blue:#4FA1F6;
+--text:#eaf2ff;
 --panel:#0b0b0b;
 --border:rgba(0,255,159,0.15);
---green:#00ff9f;
---text:#eaf2ff;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui;}
+body{background:var(--bg);color:var(--text);}
 
-body{
-background:var(--bg);
-color:var(--text);
-display:flex;
+/* NAV */
+nav{
+display:flex;justify-content:space-between;
+padding:18px 30px;
+position:fixed;width:100%;top:0;
+background:rgba(0,0,0,0.8);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--border);
+z-index:10;
+}
+nav a{color:white;text-decoration:none;margin-left:15px;}
+nav a:hover{color:var(--green);}
+
+/* HERO */
+.hero{
 min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:120px 20px 60px;
 }
 
-/* SIDEBAR */
-.sidebar{
-width:240px;
+.hero h1{
+font-size:52px;
+background:linear-gradient(90deg,var(--green),var(--blue));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{max-width:650px;margin-top:15px;color:#aaa;}
+
+.cta{
+margin-top:25px;
+padding:14px 26px;
+background:var(--green);
+color:#000;
+text-decoration:none;
+border-radius:10px;
+font-weight:700;
+}
+
+/* SECTION */
+section{
+padding:80px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+h2{color:var(--green);margin-bottom:20px;}
+
+/* CRM DEMO */
+.crm{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:16px;
+overflow:hidden;
+}
+
+.crm-header{
 background:#050505;
-border-right:1px solid var(--border);
-padding:20px;
+padding:15px;
+border-bottom:1px solid var(--border);
+display:flex;
+justify-content:space-between;
 }
 
-.sidebar h2{
-color:var(--green);
-margin-bottom:20px;
-font-size:18px;
+.crm-body{
+display:grid;
+grid-template-columns:240px 1fr;
+min-height:500px;
+}
+
+.sidebar{
+border-right:1px solid var(--border);
+padding:15px;
 }
 
 .sidebar button{
+display:block;
 width:100%;
+margin-bottom:10px;
 padding:10px;
-margin:6px 0;
 background:#111;
 border:none;
 color:white;
-text-align:left;
-cursor:pointer;
 border-radius:6px;
-transition:0.2s;
+cursor:pointer;
 }
 
-.sidebar button:hover{
-background:var(--green);
-color:#000;
-}
+.sidebar button:hover{background:var(--green);color:#000;}
 
-/* MAIN */
-.main{
-flex:1;
-padding:25px;
-}
+.content{padding:20px;}
 
-/* HEADER */
-.header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
-}
-
-.header h1{
-font-size:22px;
-}
-
-.badge{
-padding:6px 10px;
-background:rgba(0,255,159,0.1);
-border:1px solid var(--border);
-border-radius:20px;
-font-size:12px;
-color:var(--green);
-}
-
-/* KPI GRID */
-.kpi-grid{
+.cards{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-margin-bottom:25px;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
 }
 
 .card{
-background:var(--panel);
-border:1px solid var(--border);
+background:#111;
 padding:15px;
 border-radius:10px;
+border:1px solid var(--border);
 }
 
-.card h3{
-font-size:14px;
-color:#aaa;
-margin-bottom:8px;
-}
+.card h3{color:#aaa;font-size:13px;}
+.card p{font-size:22px;color:var(--green);margin-top:5px;}
 
-.card .value{
-font-size:22px;
-color:var(--green);
-font-weight:bold;
-}
-
-/* PIPELINE */
 .pipeline{
+margin-top:20px;
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:12px;
+gap:10px;
 }
 
 .stage{
-background:var(--panel);
+background:#0f0f0f;
 border:1px solid var(--border);
+padding:10px;
 border-radius:10px;
-padding:12px;
-min-height:250px;
-}
-
-.stage h4{
-margin-bottom:10px;
-font-size:14px;
-color:var(--green);
+min-height:200px;
 }
 
 .lead{
 background:#111;
-padding:10px;
+padding:8px;
 border-radius:6px;
-margin-bottom:8px;
+margin-top:6px;
 font-size:13px;
-cursor:pointer;
-transition:0.2s;
 }
 
-.lead:hover{
-background:#1a1a1a;
+/* CTA */
+.final-cta{
+text-align:center;
 }
 
-/* INPUT */
-input{
-width:100%;
-padding:10px;
-margin:5px 0;
-background:#111;
-border:1px solid #222;
-color:white;
-border-radius:6px;
-}
-
-.btn{
-padding:10px 12px;
+.final-cta a{
+margin-top:20px;
+display:inline-block;
+padding:14px 28px;
 background:var(--green);
-border:none;
 color:#000;
-font-weight:600;
-border-radius:6px;
-cursor:pointer;
-margin-top:8px;
+text-decoration:none;
+border-radius:10px;
+font-weight:700;
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#555;
 }
 
 </style>
 </head>
-
 <body>
+
+<nav>
+<div><b>Empress CRM</b></div>
+<div>
+<a href="#demo">Demo</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Business CRM Systems That Scale Your Operations</h1>
+<p>Custom-built CRM dashboards for managing leads, tracking sales pipelines, and organising business workflows in one place.</p>
+<a class="cta" href="#demo">Try Live Demo</a>
+</div>
+
+<!-- VALUE -->
+<section>
+<h2>What This System Does</h2>
+<p style="color:#aaa;max-width:800px;">
+This CRM system helps service-based businesses track leads, manage customers, and visualise their entire sales pipeline in real time. No spreadsheets. No chaos. One central system.
+</p>
+</section>
+
+<!-- CRM DEMO -->
+<section id="demo">
+<h2>Live CRM Demo</h2>
+
+<div class="crm">
+
+<div class="crm-header">
+<span>Dashboard Overview</span>
+<span style="color:var(--green);">LIVE SIMULATION</span>
+</div>
+
+<div class="crm-body">
 
 <!-- SIDEBAR -->
 <div class="sidebar">
-<h2>CRM SYSTEM</h2>
-<button onclick="show('dashboard')">Dashboard</button>
-<button onclick="show('leads')">Leads</button>
-<button onclick="show('pipeline')">Pipeline</button>
+<button>Dashboard</button>
+<button>Leads</button>
+<button>Pipeline</button>
+<button>Reports</button>
 </div>
 
-<!-- MAIN -->
-<div class="main">
+<!-- CONTENT -->
+<div class="content">
 
-<!-- HEADER -->
-<div class="header">
-<h1>Business CRM Dashboard</h1>
-<div class="badge">LIVE DEMO ENVIRONMENT</div>
-</div>
-
-<!-- DASHBOARD -->
-<div id="dashboard" class="tab">
-
-<div class="kpi-grid">
+<div class="cards">
 <div class="card">
 <h3>Total Leads</h3>
-<div class="value" id="leadCount">0</div>
+<p>48</p>
 </div>
-
 <div class="card">
-<h3>Active Pipeline</h3>
-<div class="value">12</div>
+<h3>Active Deals</h3>
+<p>12</p>
 </div>
-
 <div class="card">
-<h3>Conversion Rate</h3>
-<div class="value">38%</div>
-</div>
-
-<div class="card">
-<h3>Monthly Revenue</h3>
-<div class="value">R124,500</div>
+<h3>Conversion</h3>
+<p>36%</p>
 </div>
 </div>
-
-</div>
-
-<!-- LEADS -->
-<div id="leads" class="tab" style="display:none;">
-
-<h2>Leads Management</h2>
-
-<input id="name" placeholder="Client Name">
-<input id="email" placeholder="Client Email">
-<button class="btn" onclick="addLead()">Add Lead</button>
-
-<ul id="list"></ul>
-
-</div>
-
-<!-- PIPELINE -->
-<div id="pipeline" class="tab" style="display:none;">
-
-<h2>Sales Pipeline</h2>
 
 <div class="pipeline">
-
 <div class="stage">
-<h4>New Leads</h4>
-<div id="new"></div>
+<h4>New</h4>
+<div class="lead">ABC Construction</div>
+<div class="lead">Elite Repairs</div>
 </div>
 
 <div class="stage">
 <h4>Contacted</h4>
-<div id="contacted"></div>
+<div class="lead">Rilukey Group</div>
 </div>
 
 <div class="stage">
 <h4>Proposal</h4>
-<div id="proposal"></div>
+<div class="lead">Metro Build</div>
 </div>
 
 <div class="stage">
-<h4>Closed Won</h4>
-<div id="closed"></div>
+<h4>Closed</h4>
+<div class="lead">GreenTech SA</div>
+</div>
 </div>
 
 </div>
-
 </div>
-
 </div>
+</section>
 
-<script>
+<!-- CTA -->
+<section class="final-cta" id="contact">
+<h2>Get Your Custom CRM Built</h2>
+<p style="color:#aaa;">Book a consultation to get a system designed for your business operations.</p>
+<a href="mailto:danielle.neethling52@gmail.com">Request Demo Access</a>
+</section>
 
-function show(tab){
-document.querySelectorAll('.tab').forEach(t=>t.style.display='none');
-document.getElementById(tab).style.display='block';
-}
-
-let leads=[
-{name:"ABC Construction",email:"abc@gmail.com",status:"new"},
-{name:"Elite Repairs",email:"elite@gmail.com",status:"contacted"},
-{name:"Rilukey Group",email:"info@rilukey.com",status:"proposal"}
-];
-
-function render(){
-
-document.getElementById('new').innerHTML='';
-document.getElementById('contacted').innerHTML='';
-document.getElementById('proposal').innerHTML='';
-document.getElementById('closed').innerHTML='';
-
-leads.forEach((l,i)=>{
-
-let el=document.createElement('div');
-el.className='lead';
-el.innerText=l.name;
-el.onclick=()=>move(i);
-
-document.getElementById(l.status).appendChild(el);
-
-});
-
-document.getElementById('leadCount').innerText=leads.length;
-
-}
-
-function addLead(){
-let n=document.getElementById('name').value;
-let e=document.getElementById('email').value;
-if(!n||!e)return;
-
-leads.push({name:n,email:e,status:'new'});
-render();
-}
-
-function move(i){
-
-let order=['new','contacted','proposal','closed'];
-let current=order.indexOf(leads[i].status);
-leads[i].status=order[(current+1)%4];
-render();
-
-}
-
-render();
-
-</script>
+<footer>
+© 2026 Empress Creations | CRM Systems & Automation
+</footer>
 
 </body>
 </html>
