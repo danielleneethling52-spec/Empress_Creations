@@ -3,162 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Empress CRM | Business System Solutions</title>
+<title>Empress Creations | CRM & Business Systems</title>
 
 <style>
-:root{--bg:#000;--green:#00ff9f;--blue:#4FA1F6;--text:#eaf2ff;--panel:#0b0b0b;--border:rgba(0,255,159,0.15);} 
+:root{
+--bg:#000;
+--green:#00ff9f;
+--blue:#4FA1F6;
+--teal:#0084A3;
+--text:#eaf2ff;
+}
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui;}
-body{background:var(--bg);color:var(--text);} 
-nav{display:flex;justify-content:space-between;padding:18px 30px;position:fixed;width:100%;top:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10;} 
-nav a{color:white;text-decoration:none;margin-left:15px;} 
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 60px;} 
-.hero h1{font-size:48px;background:linear-gradient(90deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;} 
-.cta{margin-top:25px;padding:14px 26px;background:var(--green);color:#000;text-decoration:none;border-radius:10px;font-weight:700;} 
-section{padding:80px 20px;max-width:1100px;margin:auto;} 
-.crm{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;} 
-.crm-header{background:#050505;padding:15px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;} 
-.crm-body{display:grid;grid-template-columns:240px 1fr;min-height:500px;} 
-.sidebar{border-right:1px solid var(--border);padding:15px;} 
-.sidebar button{width:100%;margin-bottom:10px;padding:10px;background:#111;border:none;color:white;border-radius:6px;cursor:pointer;} 
-.sidebar button:hover{background:var(--green);color:#000;} 
-.content{padding:20px;} 
-.hidden{display:none;} 
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;} 
-.card{background:#111;padding:15px;border-radius:10px;border:1px solid var(--border);} 
-.card p{font-size:18px;color:var(--green);} 
-.pipeline{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;} 
-.stage{background:#0f0f0f;border:1px solid var(--border);padding:10px;border-radius:10px;} 
-.lead{background:#111;padding:8px;border-radius:6px;margin-top:6px;font-size:13px;cursor:pointer;} 
-.table{margin-top:20px;width:100%;border-collapse:collapse;} 
-.table th,.table td{border-bottom:1px solid #222;padding:8px;font-size:13px;text-align:left;} 
-.email-box textarea{width:100%;height:80px;background:#111;border:1px solid #222;color:white;border-radius:6px;padding:8px;margin-top:8px;} 
-.btn{margin-top:10px;padding:10px;background:var(--green);border:none;color:#000;border-radius:6px;cursor:pointer;} 
+body{background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:15px 25px;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);z-index:1000;border-bottom:1px solid rgba(0,255,159,0.2);} 
+nav a{color:white;text-decoration:none;margin:0 10px;}
+nav a:hover{color:var(--green);} 
+
+header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;position:relative;overflow:hidden;}
+
+/* Animated glow background */
+header::before{
+content:"";
+position:absolute;
+width:600px;height:600px;
+background:radial-gradient(circle, rgba(0,255,159,0.15), transparent);
+animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-30px)}
+}
+
+h1{font-size:56px;background:linear-gradient(90deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+
+header p{color:#aaa;margin-top:15px;font-size:18px;max-width:650px;}
+
+.cta{margin-top:25px;padding:14px 28px;background:linear-gradient(90deg,var(--green),var(--teal));color:#000;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 0 20px rgba(0,255,159,0.3);} 
+
+section{padding:100px 20px;max-width:1200px;margin:auto;}
+h2{color:var(--green);margin-bottom:20px;}
+
+/* BEFORE AFTER */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px;}
+.compare div{padding:20px;border-radius:12px;}
+.before{background:#0a0a0a;border:1px solid rgba(255,0,0,0.2);} 
+.after{background:#0a0a0a;border:1px solid rgba(0,255,159,0.2);} 
+.before h3{color:#ff4d4d;} 
+.after h3{color:var(--green);} 
+
+/* MINI CRM PREVIEW */
+.mini-crm{
+margin-top:40px;
+background:#0a0a0a;
+border:1px solid rgba(0,255,159,0.2);
+border-radius:14px;
+padding:20px;
+}
+
+.pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px;}
+.stage{background:#111;padding:10px;border-radius:8px;font-size:12px;}
+.stage h4{color:var(--green);margin-bottom:5px;}
+
+/* PROJECT GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.project{position:relative;height:220px;border-radius:14px;overflow:hidden;background:#0a0a0a;border:1px solid rgba(0,255,159,0.15);} 
+.project img{width:100%;height:100%;object-fit:cover;} 
+.overlay{position:absolute;bottom:0;left:0;right:0;padding:15px;background:linear-gradient(to top, rgba(0,0,0,0.95), transparent);} 
+.btn{display:inline-block;margin-top:8px;padding:6px 10px;background:var(--green);color:#000;text-decoration:none;border-radius:6px;} 
+
+footer{text-align:center;padding:40px;color:#666;} 
 </style>
 </head>
+
 <body>
 
-<nav><div><b>Empress CRM</b></div></nav>
-
-<div class="hero">
-<h1>CRM System Demo</h1>
-<a class="cta" href="#demo">Open Demo</a>
+<nav>
+<div><b>Empress Creations</b></div>
+<div>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
 </div>
+</nav>
 
-<section id="demo">
-<div class="crm">
-<div class="crm-header"><span id="viewTitle">Dashboard</span><span style="color:var(--green);">LIVE DEMO</span></div>
-<div class="crm-body">
+<!-- HERO -->
+<header>
+<h1>Stop Losing Leads. Start Running Your Business Properly.</h1>
+<p>We build custom CRM systems that help businesses track leads, manage clients, and increase revenue with structured workflows.</p>
+<a class="cta" href="crm-demo.html">🚀 View Live CRM Demo</a>
 
-<div class="sidebar">
-<button onclick="showView('dashboard')">Dashboard</button>
-<button onclick="showView('leads')">Leads</button>
-<button onclick="showView('pipeline')">Pipeline</button>
-<button onclick="showView('emails')">Emails</button>
-</div>
-
-<div class="content">
-
-<!-- DASHBOARD -->
-<div id="dashboardView">
-<div class="cards">
-<div class="card"><p id="totalLeads"></p><small>Total Leads</small></div>
-<div class="card"><p id="revenue"></p><small>Revenue</small></div>
+<!-- MINI CRM VISUAL -->
+<div class="mini-crm">
+<b>Live Pipeline Example</b>
+<div class="pipeline">
+<div class="stage"><h4>New</h4>2 Leads</div>
+<div class="stage"><h4>Contacted</h4>1 Lead</div>
+<div class="stage"><h4>Proposal</h4>1 Deal (R12,000)</div>
+<div class="stage"><h4>Closed</h4>1 Deal (R25,000)</div>
 </div>
 </div>
 
-<!-- LEADS -->
-<div id="leadsView" class="hidden">
-<table class="table"><thead><tr><th>Name</th><th>Status</th><th>Email</th></tr></thead><tbody id="leadsTable"></tbody></table>
+</header>
+
+<!-- BEFORE AFTER -->
+<section>
+<h2>Why Businesses Need This</h2>
+
+<div class="compare">
+
+<div class="before">
+<h3>Before CRM</h3>
+<p>- Leads lost in WhatsApp<br>- No follow-ups<br>- No visibility on deals<br>- Guessing revenue</p>
 </div>
 
-<!-- PIPELINE -->
-<div id="pipelineView" class="hidden"><div id="pipelineContainer" class="pipeline"></div></div>
-
-<!-- EMAIL SYSTEM -->
-<div id="emailsView" class="hidden">
-<h3>Select Lead</h3>
-<select id="leadSelect"></select>
-
-<div class="email-box">
-<textarea id="emailText" placeholder="Type email..."></textarea>
-<button class="btn" onclick="sendEmail()">Send Email</button>
-</div>
-
-<h3 style="margin-top:20px;">Email History</h3>
-<table class="table">
-<thead><tr><th>Date</th><th>Message</th><th>Reply</th></tr></thead>
-<tbody id="emailHistory"></tbody>
-</table>
-</div>
-
-</div>
-</div>
-</div>
-</section>
-
-<script>
-
-const leads=[
-{name:"ABC Construction",email:"abc@gmail.com",status:"new",value:0,history:[]},
-{name:"Elite Repairs",email:"elite@gmail.com",status:"contacted",value:0,history:[]},
-{name:"Rilukey Group",email:"info@rilukey.com",status:"proposal",value:12000,history:[]},
-{name:"GreenTech SA",email:"green@gmail.com",status:"closed",value:25000,history:[]}
-];
-
-function showView(v){document.querySelectorAll('.content>div').forEach(d=>d.classList.add('hidden'));document.getElementById(v+'View').classList.remove('hidden');document.getElementById('viewTitle').innerText=v;}
-
-function render(){
-
-// dashboard
-let revenue=leads.filter(l=>l.status==='closed').reduce((a,b)=>a+b.value,0);
-document.getElementById('totalLeads').innerText=leads.length;
-document.getElementById('revenue').innerText='R'+revenue;
-
-// leads table
-let table='';
-leads.forEach((l,i)=>{table+=`<tr><td>${l.name}</td><td>${l.status}</td><td>${l.email}</td></tr>`});
-document.getElementById('leadsTable').innerHTML=table;
-
-// pipeline
-let stages=['new','contacted','proposal','closed'];
-let html='';
-stages.forEach(s=>{html+=`<div class="stage"><b>${s}</b>`;
-leads.filter(l=>l.status===s).forEach(l=>{html+=`<div class="lead">${l.name}</div>`});
-html+='</div>';});
-document.getElementById('pipelineContainer').innerHTML=html;
-
-// dropdown
-let select='';
-leads.forEach((l,i)=>{select+=`<option value="${i}">${l.name}</option>`});
-document.getElementById('leadSelect').innerHTML=select;
-
-}
-
-function sendEmail(){
-let i=document.getElementById('leadSelect').value;
-let msg=document.getElementById('emailText').value;
-if(!msg)return;
-
-let date=new Date().toLocaleString();
-let reply=Math.random()>0.5?"Interested, please send quote":"No response yet";
-
-leads[i].history.push({date,msg,reply});
-renderHistory(i);
-}
-
-function renderHistory(i){
-let html='';
-leads[i].history.forEach(h=>{
-html+=`<tr><td>${h.date}</td><td>${h.msg}</td><td>${h.reply}</td></tr>`;
-});
-document.getElementById('emailHistory').innerHTML=html;
-}
-
-document.getElementById('leadSelect')?.addEventListener('change',e=>renderHistory(e.target.value));
-
-render();
-
-</script>
-
-</body>
+<div class="after">
+<h3>After CRM</h3>
+<p>- Every lead tracked<br>- Structured follow-ups<br>- Clear sales pipeline<br>- Real revenue insights</p>
+</d
 </html>
