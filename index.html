@@ -54,19 +54,14 @@ transition:0.3s;
 
 nav a:hover{color:var(--green);}
 
-/* GLOBAL LAYOUT SYSTEM (KEY FIX) */
+/* SECTIONS */
 section{
-padding:110px 40px;
 max-width:1100px;
 margin:auto;
-
-/* NO full-screen sections */
-min-height:auto;
-
-/* smoother reveal */
+padding:110px 40px;
 opacity:0;
-transform:translateY(26px);
-transition:all 0.75s cubic-bezier(.2,.8,.2,1);
+transform:translateY(40px);
+transition:all 0.8s cubic-bezier(.2,.8,.2,1);
 }
 
 section.visible{
@@ -74,7 +69,7 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* HERO (compressed but cinematic) */
+/* HERO */
 .hero{
 min-height:100vh;
 display:flex;
@@ -83,39 +78,26 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:0 40px;
-position:relative;
 }
 
 .hero h1{
-font-size:70px;
+font-size:72px;
 line-height:1.05;
 max-width:900px;
 background:linear-gradient(90deg,#fff,var(--green));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-transition:0.5s ease;
 }
 
 .hero p{
-margin-top:18px;
+margin-top:16px;
 color:var(--muted);
 max-width:650px;
 font-size:18px;
-transition:0.5s ease;
 }
 
-.hero.shrink h1{
-font-size:44px;
-}
-
-.hero.shrink p{
-opacity:0;
-transform:translateY(-10px);
-}
-
-/* BUTTONS */
 .buttons{
-margin-top:28px;
+margin-top:26px;
 display:flex;
 gap:12px;
 flex-wrap:wrap;
@@ -140,15 +122,9 @@ color:#fff;
 padding:12px 22px;
 border-radius:999px;
 text-decoration:none;
-transition:0.3s;
 }
 
-.btn-secondary:hover{
-border-color:var(--green);
-color:var(--green);
-}
-
-/* CONTENT GRID (tighter Apple spacing) */
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -156,30 +132,28 @@ gap:12px;
 margin-top:22px;
 }
 
-.card,.project{
+.project{
 background:var(--glass);
 border:1px solid rgba(255,255,255,0.06);
 padding:16px;
 border-radius:14px;
-transition:0.4s ease;
+cursor:pointer;
+transition:0.4s;
 }
 
-.card:hover,.project:hover{
+.project:hover{
 transform:translateY(-6px);
 border-color:var(--stroke);
 }
 
-/* TEXT */
-h2{
-font-size:34px;
-margin-bottom:8px;
-letter-spacing:-0.3px;
+.project h3{
+margin-bottom:6px;
 }
 
-p{
+.project p{
 color:var(--muted);
-font-size:14px;
-line-height:1.55;
+font-size:13px;
+line-height:1.4;
 }
 
 /* CTA */
@@ -188,22 +162,11 @@ text-align:center;
 padding:120px 40px;
 }
 
-.cta h2{
-font-size:40px;
-margin-bottom:10px;
-}
-
-/* FOOTER */
 footer{
 text-align:center;
 padding:30px;
 color:#555;
 font-size:12px;
-}
-
-/* subtle divider feel (removes “floating sections”) */
-section + section{
-margin-top:-10px;
 }
 </style>
 </head>
@@ -217,16 +180,17 @@ margin-top:-10px;
 <a href="#services">Services</a>
 <a href="#work">Work</a>
 <a href="crm-demo.html">CRM Demo</a>
+<a href="saas-demo.html">Live System</a>
 </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero visible" id="hero">
+<section class="hero visible">
 
 <h1>We Build Business Systems That Scale Revenue</h1>
 
 <p>
-Custom CRMs, automation systems, and high-performance web platforms designed to turn operations into structured growth engines.
+Custom CRMs, SaaS platforms, automation systems and high-performance websites built for real business growth.
 </p>
 
 <div class="buttons">
@@ -243,24 +207,24 @@ Custom CRMs, automation systems, and high-performance web platforms designed to 
 
 <div class="grid">
 
-<div class="card">
+<div class="project">
 <h3>Custom Systems</h3>
-<p>Business dashboards and automation engines built for scale.</p>
+<p>Automation engines and business dashboards built from scratch.</p>
 </div>
 
-<div class="card">
+<div class="project">
 <h3>CRM Platforms</h3>
-<p>Lead tracking, pipelines, revenue and reporting systems.</p>
+<p>Lead tracking, pipelines, revenue and client management systems.</p>
 </div>
 
-<div class="card">
+<div class="project">
 <h3>Web Development</h3>
-<p>High-conversion websites designed for real business growth.</p>
+<p>High-conversion websites built for scale and performance.</p>
 </div>
 
-<div class="card">
+<div class="project">
 <h3>Marketing Systems</h3>
-<p>Funnels and automation that generate consistent leads.</p>
+<p>Funnels, automation and lead generation systems.</p>
 </div>
 
 </div>
@@ -270,32 +234,56 @@ Custom CRMs, automation systems, and high-performance web platforms designed to 
 <!-- WORK -->
 <section id="work">
 
-<h2>Selected Systems</h2>
+<h2>Selected Systems & Case Studies</h2>
 
 <div class="grid">
 
-<div class="project">
-<h3>Rilukey CRM</h3>
-<p>Business pipeline + CRM operations system.</p>
-<a href="case-rilukey-crm.html">View Case Study</a>
+<!-- CRM -->
+<div class="project" onclick="window.location.href='case-rilukey-crm.html'">
+<h3>Rilukey CRM System</h3>
+<p>Full CRM with leads, pipeline, revenue tracking.</p>
 </div>
 
-<div class="project">
-<h3>Wedding App</h3>
-<p>Planning, vendors and budget system.</p>
-<a href="case-wedding-app.html">View Case Study</a>
+<div class="project" onclick="window.location.href='saas-demo.html'">
+<h3>Live CRM SaaS Demo</h3>
+<p>Interactive CRM dashboard simulation.</p>
 </div>
 
-<div class="project">
+<!-- SYSTEMS -->
+<div class="project" onclick="window.location.href='case-wedding-app.html'">
+<h3>Wedding App System</h3>
+<p>Planning, vendors, budget tracking system.</p>
+</div>
+
+<div class="project" onclick="window.location.href='case-auction-app.html'">
 <h3>Auction Platform</h3>
-<p>Marketplace with bidding system.</p>
-<a href="case-auction-app.html">View Case Study</a>
+<p>Marketplace with bidding + sales system.</p>
 </div>
 
-<div class="project">
+<div class="project" onclick="window.location.href='case-crypto-dashboard.html'">
 <h3>Crypto Dashboard</h3>
-<p>Analytics + prediction system.</p>
-<a href="case-crypto-dashboard.html">View Case Study</a>
+<p>Analytics + crypto prediction system.</p>
+</div>
+
+<!-- WEBSITES -->
+<div class="project" onclick="window.location.href='https://rodtimberproducts.co.za'">
+<h3>Rod Timber Products</h3>
+<p>Industrial product catalog website.</p>
+</div>
+
+<div class="project" onclick="window.location.href='https://eliteappliancetechnicians.co.za'">
+<h3>Elite Appliance Technicians</h3>
+<p>Service booking website system.</p>
+</div>
+
+<div class="project" onclick="window.location.href='https://goodwoodrfc.co.za'">
+<h3>Goodwood RFC</h3>
+<p>Rugby club membership + sponsor system.</p>
+</div>
+
+<div class="project" onclick="window.location.href='https://busagirl-products.co.za'">
+<h3>Busa Girl Products</h3>
+<p>E-commerce beauty product store.</p>
 </div>
 
 </div>
@@ -320,35 +308,19 @@ Custom CRMs, automation systems, and high-performance web platforms designed to 
 </footer>
 
 <script>
-
-// section reveal (smooth cinematic flow)
+// reveal animation
 const sections = document.querySelectorAll("section");
 
 const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("visible");
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.classList.add("visible");
 }
 });
-},{threshold:0.2});
+},{threshold:0.15});
 
-sections.forEach(sec=>observer.observe(sec));
-
-
-// hero compression (Apple-style scroll feel)
-const hero = document.getElementById("hero");
-
-window.addEventListener("scroll",()=>{
-if(window.scrollY > 100){
-hero.classList.add("shrink");
-}else{
-hero.classList.remove("shrink");
-}
-});
-
+sections.forEach(s=>observer.observe(s));
 </script>
 
-</body>
-</html>
 </body>
 </html>
