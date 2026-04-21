@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empress SaaS CRM</title>
+
+<style>
+:root{
+--bg:#000;
+--green:#00ff9f;
+--panel:#0b0b0b;
+--text:#eaf2ff;
+--border:rgba(0,255,159,0.15);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui;}
+body{background:var(--bg);color:var(--text);}
+
+/* LOGIN */
+.login{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.login-box{
+width:320px;
+background:var(--panel);
+padding:30px;
+border-radius:12px;
+border:1px solid var(--border);
+text-align:center;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#111;
+border:none;
+color:white;
+border-radius:6px;
+}
+
+button{
+width:100%;
+margin-top:15px;
+padding:10px;
+background:var(--green);
+border:none;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* APP */
+.app{
+display:none;
+height:100vh;
+grid-template-columns:220px 1fr;
+}
+
+/* SIDEBAR */
+.sidebar{
+background:#050505;
+padding:20px;
+border-right:1px solid var(--border);
+}
+
+.sidebar h2{
+color:var(--green);
+margin-bottom:20px;
+}
+
+.sidebar button{
+width:100%;
+margin-bottom:10px;
+padding:10px;
+background:#111;
+border:none;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+.sidebar button:hover{
+background:var(--green);
+color:#000;
+}
+
+/* MAIN */
+.main{
+padding:20px;
+}
+
+/* CARDS */
+.cards{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+margin-bottom:20px;
+}
+
+.card{
+background:#111;
+padding:15px;
+border-radius:10px;
+border:1px solid var(--border);
+}
+
+.card h4{color:#aaa;font-size:12px;}
+.card p{color:var(--green);font-size:18px;}
+
+/* MODULES */
+.module{display:none;}
+.active{display:block;}
+
+/* TABLE STYLE */
+.table{
+width:100%;
+margin-top:10px;
+border-collapse:collapse;
+}
+
+.table td, .table th{
+padding:10px;
+border-bottom:1px solid #222;
+font-size:13px;
+}
+
+.action{
+color:var(--green);
+cursor:pointer;
+}
+
+/* REPORT */
+.report-box{
+background:#111;
+padding:15px;
+border-radius:10px;
+margin-top:10px;
+}
+
+/* SMALL TEXT */
+.small{color:#aaa;font-size:12px;}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div class="login" id="login">
+<div class="login-box">
+<h2 style="color:var(--green)">Empress CRM</h2>
+<input placeholder="Username">
+<input type="password" placeholder="Password">
+<button onclick="login()">Enter CRM</button>
+</div>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<h2>CRM</h2>
+
+<button onclick="show('dashboard')">Dashboard</button>
+<button onclick="show('leads')">Leads</button>
+<button onclick="show('deals')">Proposed Deals</button>
+<button onclick="show('closed')">Closed Deals</button>
+<button onclick="show('emails')">Emails</button>
+<button onclick="show('revenue')">Revenue</button>
+<button onclick="show('reports')">Reports</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="module active">
+
+<div class="cards">
+<div class="card"><h4>Emails</h4><p>128</p></div>
+<div class="card"><h4>Calls</h4><p>64</p></div>
+<div class="card"><h4>Deals</h4><p>19</p></div>
+<div class="card"><h4>Closed</h4><p>11</p></div>
+<div class="card"><h4>Revenue</h4><p>R52,000</p></div>
+</div>
+
+</div>
+
+<!-- LEADS -->
+<div id="leads" class="module">
+
+<h3>Leads</h3>
+
+<table class="table">
+<tr><th>Name</th><th>Contact</th><th>Sector</th><th>Actions</th></tr>
+
+<tr>
+<td>ABC Construction</td>
+<td>081 000 0001</td>
+<td>Construction</td>
+<td>
+<span class="action">Email</span> | 
+<span class="action">Call</span>
+</td>
+</tr>
+
+<tr>
+<td>Elite Repairs</td>
+<td>082 222 2222</td>
+<td>Services</td>
+<td>
+<span class="action">Email</span> | 
+<span class="action">Call</span>
+</td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- DEALS -->
+<div id="deals" class="module">
+
+<h3>Proposed Deals</h3>
+
+<table class="table">
+<tr><th>Client</th><th>Type</th><th>Value</th><th>Status</th></tr>
+
+<tr>
+<td>Metro Build</td>
+<td>Service</td>
+<td>R12,000</td>
+<td>Proposal Sent</td>
+</tr>
+
+<tr>
+<td>Design Co</td>
+<td>Service</td>
+<td>R15,000</td>
+<td>Negotiation</td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- CLOSED -->
+<div id="closed" class="module">
+
+<h3>Closed Deals</h3>
+
+<table class="table">
+<tr><th>Client</th><th>Date</th><th>Agent</th><th>Revenue</th></tr>
+
+<tr>
+<td>GreenTech SA</td>
+<td>18 Apr</td>
+<td>Admin</td>
+<td>R25,000</td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- EMAILS -->
+<div id="emails" class="module">
+
+<h3>Email History</h3>
+
+<p class="small">All sent emails + replies tracked here (simulated)</p>
+
+<div class="report-box">
+Lead: ABC Construction<br>
+Sent: Proposal Email<br>
+Reply: "Looks good, send contract"
+</div>
+
+</div>
+
+<!-- REVENUE -->
+<div id="revenue" class="module">
+
+<h3>Revenue Tracking</h3>
+
+<div class="report-box">
+Company Target: R100,000<br>
+Agent Target: R25,000<br>
+Today's Revenue: R12,000
+</div>
+
+</div>
+
+<!-- REPORTS -->
+<div id="reports" class="module">
+
+<h3>Reports</h3>
+
+<div class="report-box">
+Productivity: 82%<br>
+Conversion Rate: 38%
+</div>
+
+<button>📧 Email Report</button>
+<button>⬇ Download Report</button>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+function login(){
+document.getElementById("login").style.display="none";
+document.getElementById("app").style.display="grid";
+}
+
+function show(id){
+document.querySelectorAll(".module").forEach(m=>m.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+</script>
+
+</body>
+</html>
