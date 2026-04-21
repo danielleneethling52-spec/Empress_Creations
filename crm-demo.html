@@ -3,123 +3,235 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Empress Creations | CRM & Business Systems</title>
 
 <style>
 :root{
 --bg:#000;
 --green:#00ff9f;
---blue:#4FA1F6;
---teal:#0084A3;
 --text:#eaf2ff;
+--panel:#0b0b0b;
+--border:rgba(0,255,159,0.15);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui;}
-body{background:var(--bg);color:var(--text);overflow-x:hidden;}
+body{background:var(--bg);color:var(--text);}
 
-nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:15px 25px;background:rgba(0,0,0,0.7);backdrop-filter:blur(10px);z-index:1000;border-bottom:1px solid rgba(0,255,159,0.2);} 
-nav a{color:white;text-decoration:none;margin:0 10px;}
-nav a:hover{color:var(--green);} 
-
-header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;position:relative;overflow:hidden;}
-
-/* Animated glow background */
-header::before{
-content:"";
-position:absolute;
-width:600px;height:600px;
-background:radial-gradient(circle, rgba(0,255,159,0.15), transparent);
-animation:float 6s ease-in-out infinite;
+/* HERO */
+.hero{
+padding:120px 20px 50px;
+text-align:center;
 }
 
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-30px)}
+.hero h1{
+font-size:52px;
+background:linear-gradient(90deg,var(--green),#4FA1F6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-h1{font-size:56px;background:linear-gradient(90deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{
+color:#aaa;
+max-width:750px;
+margin:15px auto;
+}
 
-header p{color:#aaa;margin-top:15px;font-size:18px;max-width:650px;}
+.cta{
+display:inline-block;
+margin-top:15px;
+padding:14px 28px;
+background:var(--green);
+color:#000;
+border-radius:10px;
+font-weight:700;
+text-decoration:none;
+}
 
-.cta{margin-top:25px;padding:14px 28px;background:linear-gradient(90deg,var(--green),var(--teal));color:#000;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 0 20px rgba(0,255,159,0.3);} 
+.secondary-cta{
+display:inline-block;
+margin-top:10px;
+padding:12px 24px;
+background:#111;
+border:1px solid var(--border);
+color:white;
+border-radius:10px;
+text-decoration:none;
+}
 
-section{padding:100px 20px;max-width:1200px;margin:auto;}
-h2{color:var(--green);margin-bottom:20px;}
-
-/* BEFORE AFTER */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px;}
-.compare div{padding:20px;border-radius:12px;}
-.before{background:#0a0a0a;border:1px solid rgba(255,0,0,0.2);} 
-.after{background:#0a0a0a;border:1px solid rgba(0,255,159,0.2);} 
-.before h3{color:#ff4d4d;} 
-.after h3{color:var(--green);} 
-
-/* MINI CRM PREVIEW */
-.mini-crm{
-margin-top:40px;
-background:#0a0a0a;
-border:1px solid rgba(0,255,159,0.2);
-border-radius:14px;
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:15px;
 padding:20px;
+max-width:1100px;
+margin:auto;
 }
 
-.pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px;}
-.stage{background:#111;padding:10px;border-radius:8px;font-size:12px;}
-.stage h4{color:var(--green);margin-bottom:5px;}
+.card{
+background:var(--panel);
+padding:20px;
+border-radius:12px;
+border:1px solid var(--border);
+}
 
-/* PROJECT GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
-.project{position:relative;height:220px;border-radius:14px;overflow:hidden;background:#0a0a0a;border:1px solid rgba(0,255,159,0.15);} 
-.project img{width:100%;height:100%;object-fit:cover;} 
-.overlay{position:absolute;bottom:0;left:0;right:0;padding:15px;background:linear-gradient(to top, rgba(0,0,0,0.95), transparent);} 
-.btn{display:inline-block;margin-top:8px;padding:6px 10px;background:var(--green);color:#000;text-decoration:none;border-radius:6px;} 
+.card h3{color:var(--green);margin-bottom:10px;}
 
-footer{text-align:center;padding:40px;color:#666;} 
+/* FORM */
+.form{
+max-width:600px;
+margin:40px auto;
+background:var(--panel);
+padding:20px;
+border-radius:12px;
+border:1px solid var(--border);
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#111;
+border:none;
+color:white;
+border-radius:6px;
+}
+
+button{
+width:100%;
+margin-top:15px;
+padding:12px;
+background:var(--green);
+border:none;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* CTA AREA */
+.cta-area{
+text-align:center;
+padding:40px 20px;
+}
+
+.whatsapp{
+display:inline-block;
+margin-top:10px;
+padding:12px 24px;
+background:var(--green);
+color:#000;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+}
 </style>
 </head>
 
 <body>
 
-<nav>
-<div><b>Empress Creations</b></div>
-<div>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
-
 <!-- HERO -->
-<header>
-<h1>Stop Losing Leads. Start Running Your Business Properly.</h1>
-<p>We build custom CRM systems that help businesses track leads, manage clients, and increase revenue with structured workflows.</p>
-<a class="cta" href="crm-demo.html">🚀 View Live CRM Demo</a>
+<section class="hero">
 
-<!-- MINI CRM VISUAL -->
-<div class="mini-crm">
-<b>Live Pipeline Example</b>
-<div class="pipeline">
-<div class="stage"><h4>New</h4>2 Leads</div>
-<div class="stage"><h4>Contacted</h4>1 Lead</div>
-<div class="stage"><h4>Proposal</h4>1 Deal (R12,000)</div>
-<div class="stage"><h4>Closed</h4>1 Deal (R25,000)</div>
-</div>
-</div>
+<h1>Build Systems That Turn Leads Into Revenue</h1>
 
-</header>
+<p>
+We design custom CRM systems and automation tools that help businesses capture leads, manage clients, and scale operations.
+</p>
 
-<!-- BEFORE AFTER -->
-<section>
-<h2>Why Businesses Need This</h2>
+<!-- PRIMARY CTA -->
+<a class="cta" href="#form">🚀 Book CRM Demo</a>
 
-<div class="compare">
+<!-- NEW SECONDARY CTA -->
+<br>
+<a class="secondary-cta" href="saas-demo.html">
+💻 View Live CRM Demo
+</a>
 
-<div class="before">
-<h3>Before CRM</h3>
-<p>- Leads lost in WhatsApp<br>- No follow-ups<br>- No visibility on deals<br>- Guessing revenue</p>
+</section>
+
+<!-- VALUE -->
+<section class="grid">
+
+<div class="card">
+<h3>Lead Generation Systems</h3>
+<p>Capture every enquiry and never lose a potential client again.</p>
 </div>
 
-<div class="after">
-<h3>After CRM</h3>
-<p>- Every lead tracked<br>- Structured follow-ups<br>- Clear sales pipeline<br>- Real revenue insights</p>
-</d
+<div class="card">
+<h3>CRM Dashboards</h3>
+<p>Track deals, pipelines and revenue in real time.</p>
+</div>
+
+<div class="card">
+<h3>Automation Ready</h3>
+<p>Upgrade your system with email, WhatsApp and workflow automation.</p>
+</div>
+
+<div class="card">
+<h3>Business Visibility</h3>
+<p>See exactly how your company is performing at all times.</p>
+</div>
+
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-area">
+
+<h2 style="color:var(--green)">Ready to Upgrade Your Business Systems?</h2>
+
+<p style="color:#aaa;max-width:600px;margin:auto;">
+Book a free CRM demo consultation or explore the live system.
+</p>
+
+<a class="whatsapp" href="https://wa.me/27733086462">
+💬 WhatsApp Direct
+</a>
+
+</section>
+
+<!-- FORM -->
+<section id="form" class="form">
+
+<h2 style="color:var(--green);text-align:center;">Book CRM Demo</h2>
+
+<input id="name" placeholder="Full Name">
+<input id="business" placeholder="Business Name">
+<input id="email" placeholder="Email">
+<input id="phone" placeholder="Phone">
+<textarea id="message" placeholder="What do you need?"></textarea>
+
+<button onclick="submitLead()">Submit Request</button>
+
+</section>
+
+<script>
+
+let leads = JSON.parse(localStorage.getItem("crm_leads") || "[]");
+
+function submitLead(){
+
+let lead = {
+name:document.getElementById("name").value,
+business:document.getElementById("business").value,
+email:document.getElementById("email").value,
+phone:document.getElementById("phone").value,
+message:document.getElementById("message").value,
+date:new Date().toLocaleDateString()
+};
+
+leads.push(lead);
+localStorage.setItem("crm_leads", JSON.stringify(leads));
+
+alert("Request submitted. We will contact you shortly.");
+
+document.getElementById("name").value="";
+document.getElementById("business").value="";
+document.getElementById("email").value="";
+document.getElementById("phone").value="";
+document.getElementById("message").value="";
+}
+
+</script>
+
+</body>
 </html>
