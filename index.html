@@ -4,37 +4,57 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Empress Creations | CRM & Business Systems</title>
+<title>Empress Creations | Business Systems Studio</title>
 
 <style>
 :root{
 --bg:#000;
 --green:#00ff9f;
---blue:#4FA1F6;
---light:#ACE6FF;
---teal:#0084A3;
 --text:#eaf2ff;
+--muted:#9aa4b2;
+--glass:rgba(255,255,255,0.04);
+--stroke:rgba(0,255,159,0.15);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui;}
-body{background:var(--bg);color:var(--text);overflow-x:hidden;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
 
 /* NAV */
 nav{
-position:fixed;top:0;width:100%;
-display:flex;justify-content:space-between;
-padding:15px 25px;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(10px);
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:18px 40px;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(20px);
 z-index:1000;
-border-bottom:1px solid rgba(0,255,159,0.2);
+border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-nav a{color:white;text-decoration:none;margin:0 10px;}
+nav a{
+color:var(--muted);
+text-decoration:none;
+margin-left:18px;
+font-size:14px;
+transition:0.3s;
+}
+
 nav a:hover{color:var(--green);}
 
 /* HERO */
-header{
+.hero{
 height:100vh;
 display:flex;
 flex-direction:column;
@@ -44,215 +64,332 @@ text-align:center;
 padding:0 20px;
 }
 
-h1{
-font-size:56px;
-background:linear-gradient(90deg,var(--green),var(--blue));
+.hero h1{
+font-size:72px;
+line-height:1.05;
+max-width:1000px;
+background:linear-gradient(90deg,#fff,var(--green));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+animation:fadeUp 1.2s ease;
 }
 
-header p{color:#aaa;margin-top:10px;}
-
-.cta{
-margin-top:20px;
-padding:12px 24px;
-background:linear-gradient(90deg,var(--green),var(--teal));
-color:#000;
-border-radius:10px;
-text-decoration:none;
-font-weight:700;
+.hero p{
+margin-top:18px;
+color:var(--muted);
+max-width:700px;
+font-size:18px;
+animation:fadeUp 1.6s ease;
 }
 
-/* SECTIONS */
-section{
-padding:100px 20px;
-max-width:1200px;
-margin:auto;
+.buttons{
+margin-top:30px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+justify-content:center;
+animation:fadeUp 1.9s ease;
 }
 
-h2{color:var(--green);margin-bottom:20px;}
-
-/* PROJECT GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-}
-
-.project{
-position:relative;
-height:220px;
-border-radius:14px;
-overflow:hidden;
-background:#0a0a0a;
-border:1px solid rgba(0,255,159,0.15);
-}
-
-.project img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.overlay{
-position:absolute;
-bottom:0;
-left:0;
-right:0;
-padding:15px;
-background:linear-gradient(to top, rgba(0,0,0,0.95), transparent);
-}
-
-.btn{
-display:inline-block;
-margin-top:8px;
-padding:6px 10px;
+.btn-primary{
 background:var(--green);
 color:#000;
+padding:12px 22px;
+border-radius:999px;
+font-weight:600;
 text-decoration:none;
-border-radius:6px;
+transition:0.3s;
 }
 
-/* CRM PREVIEW */
-.crm-preview{
+.btn-primary:hover{transform:scale(1.05);}
+
+.btn-secondary{
+border:1px solid rgba(255,255,255,0.1);
+color:#fff;
+padding:12px 22px;
+border-radius:999px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn-secondary:hover{
+border-color:var(--green);
+color:var(--green);
+}
+
+/* SECTION BASE */
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:120px 40px;
+max-width:1200px;
+margin:auto;
+
+opacity:0;
+transform:translateY(60px);
+transition:all 1s ease;
+}
+
+section.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+h2{
+font-size:40px;
+margin-bottom:20px;
+}
+
+/* FEATURE GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:18px;
+margin-top:40px;
+}
+
+.card{
+background:var(--glass);
+border:1px solid rgba(255,255,255,0.06);
+padding:22px;
+border-radius:18px;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:var(--stroke);
+}
+
+.card h3{margin-bottom:10px;}
+
+.card p{
+color:var(--muted);
+font-size:14px;
+line-height:1.5;
+}
+
+/* PROJECT CARDS */
+.project{
+background:var(--glass);
+border:1px solid rgba(255,255,255,0.06);
+padding:22px;
+border-radius:18px;
+transition:all 0.8s ease;
+opacity:0;
+transform:translateY(40px) scale(0.97);
+}
+
+.project.show{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+.project:hover{
+transform:translateY(-10px) scale(1.02);
+border-color:var(--stroke);
+}
+
+.project a{
+display:inline-block;
+margin-top:10px;
+color:var(--green);
+text-decoration:none;
+font-size:13px;
+}
+
+/* CTA */
+.cta{
 text-align:center;
+padding:140px 40px;
 }
 
-.crm-preview img{
-width:100%;
-max-width:700px;
-border-radius:12px;
-margin-top:20px;
+.cta h2{
+font-size:44px;
 }
 
-/* CONTACT */
+.cta p{
+color:var(--muted);
+max-width:600px;
+margin:auto;
+margin-top:10px;
+}
+
+/* FOOTER */
 footer{
 text-align:center;
 padding:40px;
-color:#666;
+color:#555;
+font-size:13px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
 <div><b>Empress Creations</b></div>
 <div>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
+<a href="#services">Services</a>
+<a href="#work">Work</a>
+<a href="crm-demo.html">CRM Demo</a>
 </div>
 </nav>
 
 <!-- HERO -->
-<header>
-<h1>We Build Business Systems</h1>
-<p>CRM platforms, dashboards and automation tools that scale companies.</p>
-<a class="cta" href="#projects">View Work</a>
-</header>
+<section class="hero visible">
 
-<!-- CRM PREVIEW -->
-<section class="crm-preview">
-<h2>Custom CRM Systems</h2>
-<p style="color:#aaa; max-width:700px; margin:auto;">
-Try a live CRM system demo. This is the type of platform I build for businesses to manage leads, workflows and operations.
+<h1>We Build Business Systems That Scale Revenue</h1>
+
+<p>
+Custom CRM platforms, automation engines, and high-performance web systems designed to turn operations into structured growth.
 </p>
 
-<img src="assets/hero-crm.png">
+<div class="buttons">
+<a class="btn-primary" href="crm-demo.html">Book CRM Demo</a>
+<a class="btn-secondary" href="saas-demo.html">View Live System</a>
+</div>
 
-<a class="cta" href="crm-demo.html">🚀 Launch Live CRM Demo</a>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-<h2>Projects</h2>
+<!-- SERVICES -->
+<section id="services">
+
+<h2>What We Build</h2>
 
 <div class="grid">
 
-<!-- RILUKEY CRM -->
-<div class="project">
-<img src="assets/projects/crm.jpg">
-<div class="overlay">
-<h3>Rilukey CRM</h3>
-<a class="btn" href="case-rilukey-crm.html">View Case Study</a>
-</div>
+<div class="card">
+<h3>Custom Systems</h3>
+<p>Full business dashboards, CRMs, automation and workflow systems.</p>
 </div>
 
-<!-- AUCTION APP -->
-<div class="project">
-<img src="assets/projects/auction.jpg">
-<div class="overlay">
-<h3>Auction Platform</h3>
-<a class="btn" href="case-auction-app.html">View Case Study</a>
-</div>
+<div class="card">
+<h3>CRM Platforms</h3>
+<p>Lead tracking, pipelines, revenue systems and reporting dashboards.</p>
 </div>
 
-<!-- WEDDING APP -->
-<div class="project">
-<img src="assets/projects/wedding.jpg">
-<div class="overlay">
-<h3>Wedding System</h3>
-<a class="btn" href="case-wedding-app.html">View Case Study</a>
-</div>
+<div class="card">
+<h3>Web Development</h3>
+<p>High-end websites built for conversion and scalability.</p>
 </div>
 
-<!-- CRYPTO DASHBOARD -->
-<div class="project">
-<img src="assets/projects/crypto.jpg">
-<div class="overlay">
-<h3>Crypto Dashboard</h3>
-<a class="btn" href="case-crypto-dashboard.html">View Case Study</a>
-</div>
-</div>
-
-<!-- ROD TIMBER -->
-<div class="project">
-<img src="assets/projects/rodtimber.jpg">
-<div class="overlay">
-<h3>Rod Timber</h3>
-<a class="btn" href="case-rod-timber.html">View Case Study</a>
-</div>
-</div>
-
-<!-- GOODWOOD RFC -->
-<div class="project">
-<img src="assets/projects/goodwood.jpg">
-<div class="overlay">
-<h3>Goodwood RFC</h3>
-<a class="btn" href="case-goodwood-rfc.html">View Case Study</a>
-</div>
-</div>
-
-<!-- ELITE APPLIANCES -->
-<div class="project">
-<img src="assets/projects/elite.jpg">
-<div class="overlay">
-<h3>Elite Appliance Technicians</h3>
-<a class="btn" href="case-appliance-technicians.html">View Case Study</a>
-</div>
-</div>
-
-<!-- BUSA GIRL -->
-<div class="project">
-<img src="assets/projects/busa.jpg">
-<div class="overlay">
-<h3>Busa Girl Products</h3>
-<a class="btn" href="case-busa-girl.html">View Case Study</a>
-</div>
+<div class="card">
+<h3>Marketing Systems</h3>
+<p>Funnels, automation and lead generation engines.</p>
 </div>
 
 </div>
+
 </section>
-<!-- CONTACT -->
-<section id="contact">
-<h2>Contact</h2>
-<p>📞 073 308 6462</p>
-<p>📧 danielle.neethling52@gmail.com</p>
+
+<!-- WORK -->
+<section id="work">
+
+<h2>Selected Systems</h2>
+
+<div class="grid">
+
+<div class="project">
+<h3>Rilukey CRM</h3>
+<p>Full pipeline + business operations system.</p>
+<a href="case-rilukey-crm.html">View Case Study</a>
+</div>
+
+<div class="project">
+<h3>Wedding App</h3>
+<p>Planning, vendors and budget system.</p>
+<a href="case-wedding-app.html">View Case Study</a>
+</div>
+
+<div class="project">
+<h3>Auction Platform</h3>
+<p>Marketplace with bidding system.</p>
+<a href="case-auction-app.html">View Case Study</a>
+</div>
+
+<div class="project">
+<h3>Crypto Dashboard</h3>
+<p>Analytics and prediction system.</p>
+<a href="case-crypto-dashboard.html">View Case Study</a>
+</div>
+
+<div class="project">
+<h3>Rod Timber</h3>
+<p>Product + quote management system.</p>
+<a href="https://rodtimberproducts.co.za">Visit</a>
+</div>
+
+<div class="project">
+<h3>Elite Appliances</h3>
+<p>Service booking system.</p>
+<a href="https://eliteappliancetechnicians.co.za">Visit</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+
+<h2>Ready to Systemise Your Business?</h2>
+
+<p>
+Book a CRM demo and see how we transform operations into revenue systems.
+</p>
+
+<br><br>
+
+<a class="btn-primary" href="crm-demo.html">Book Demo</a>
+
 </section>
 
 <footer>
-© 2026 Empress Creations
+© 2026 Empress Creations — Business Systems Studio
 </footer>
 
+<script>
+// SECTION REVEAL
+const sections = document.querySelectorAll("section");
+
+const sectionObserver = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible");
+}
+});
+},{threshold:0.15});
+
+sections.forEach(s=>sectionObserver.observe(s));
+
+// PROJECT ANIMATION
+const projects = document.querySelectorAll(".project");
+
+const projectObserver = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:0.2});
+
+projects.forEach((p,i)=>{
+p.style.transitionDelay = (i * 120) + "ms";
+projectObserver.observe(p);
+});
+</script>
+
+</body>
+</html>
 </body>
 </html>
