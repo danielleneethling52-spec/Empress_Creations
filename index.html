@@ -13,7 +13,7 @@
 --text:#eaf2ff;
 --muted:#9aa4b2;
 --glass:rgba(255,255,255,0.04);
---stroke:rgba(0,255,159,0.15);
+--stroke:rgba(0,255,159,0.12);
 }
 
 *{
@@ -27,6 +27,7 @@ body{
 background:var(--bg);
 color:var(--text);
 overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
 /* NAV */
@@ -36,9 +37,9 @@ top:0;
 width:100%;
 display:flex;
 justify-content:space-between;
-padding:18px 40px;
+padding:16px 40px;
 background:rgba(0,0,0,0.55);
-backdrop-filter:blur(20px);
+backdrop-filter:blur(18px);
 z-index:1000;
 border-bottom:1px solid rgba(255,255,255,0.05);
 }
@@ -46,49 +47,79 @@ border-bottom:1px solid rgba(255,255,255,0.05);
 nav a{
 color:var(--muted);
 text-decoration:none;
-margin-left:18px;
-font-size:14px;
+margin-left:16px;
+font-size:13px;
 transition:0.3s;
 }
 
 nav a:hover{color:var(--green);}
 
-/* HERO */
+/* GLOBAL LAYOUT SYSTEM (KEY FIX) */
+section{
+padding:110px 40px;
+max-width:1100px;
+margin:auto;
+
+/* NO full-screen sections */
+min-height:auto;
+
+/* smoother reveal */
+opacity:0;
+transform:translateY(26px);
+transition:all 0.75s cubic-bezier(.2,.8,.2,1);
+}
+
+section.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* HERO (compressed but cinematic) */
 .hero{
-height:100vh;
+min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:0 20px;
+padding:0 40px;
+position:relative;
 }
 
 .hero h1{
-font-size:72px;
+font-size:70px;
 line-height:1.05;
-max-width:1000px;
+max-width:900px;
 background:linear-gradient(90deg,#fff,var(--green));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:fadeUp 1.2s ease;
+transition:0.5s ease;
 }
 
 .hero p{
 margin-top:18px;
 color:var(--muted);
-max-width:700px;
+max-width:650px;
 font-size:18px;
-animation:fadeUp 1.6s ease;
+transition:0.5s ease;
 }
 
+.hero.shrink h1{
+font-size:44px;
+}
+
+.hero.shrink p{
+opacity:0;
+transform:translateY(-10px);
+}
+
+/* BUTTONS */
 .buttons{
-margin-top:30px;
+margin-top:28px;
 display:flex;
 gap:12px;
 flex-wrap:wrap;
 justify-content:center;
-animation:fadeUp 1.9s ease;
 }
 
 .btn-primary{
@@ -104,7 +135,7 @@ transition:0.3s;
 .btn-primary:hover{transform:scale(1.05);}
 
 .btn-secondary{
-border:1px solid rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.15);
 color:#fff;
 padding:12px 22px;
 border-radius:999px;
@@ -117,118 +148,62 @@ border-color:var(--green);
 color:var(--green);
 }
 
-/* SECTION BASE */
-section{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding:120px 40px;
-max-width:1200px;
-margin:auto;
-
-opacity:0;
-transform:translateY(60px);
-transition:all 1s ease;
-}
-
-section.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-h2{
-font-size:40px;
-margin-bottom:20px;
-}
-
-/* FEATURE GRID */
+/* CONTENT GRID (tighter Apple spacing) */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:18px;
-margin-top:40px;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:12px;
+margin-top:22px;
 }
 
-.card{
+.card,.project{
 background:var(--glass);
 border:1px solid rgba(255,255,255,0.06);
-padding:22px;
-border-radius:18px;
-transition:0.4s;
+padding:16px;
+border-radius:14px;
+transition:0.4s ease;
 }
 
-.card:hover{
-transform:translateY(-8px);
+.card:hover,.project:hover{
+transform:translateY(-6px);
 border-color:var(--stroke);
 }
 
-.card h3{margin-bottom:10px;}
+/* TEXT */
+h2{
+font-size:34px;
+margin-bottom:8px;
+letter-spacing:-0.3px;
+}
 
-.card p{
+p{
 color:var(--muted);
 font-size:14px;
-line-height:1.5;
-}
-
-/* PROJECT CARDS */
-.project{
-background:var(--glass);
-border:1px solid rgba(255,255,255,0.06);
-padding:22px;
-border-radius:18px;
-transition:all 0.8s ease;
-opacity:0;
-transform:translateY(40px) scale(0.97);
-}
-
-.project.show{
-opacity:1;
-transform:translateY(0) scale(1);
-}
-
-.project:hover{
-transform:translateY(-10px) scale(1.02);
-border-color:var(--stroke);
-}
-
-.project a{
-display:inline-block;
-margin-top:10px;
-color:var(--green);
-text-decoration:none;
-font-size:13px;
+line-height:1.55;
 }
 
 /* CTA */
 .cta{
 text-align:center;
-padding:140px 40px;
+padding:120px 40px;
 }
 
 .cta h2{
-font-size:44px;
-}
-
-.cta p{
-color:var(--muted);
-max-width:600px;
-margin:auto;
-margin-top:10px;
+font-size:40px;
+margin-bottom:10px;
 }
 
 /* FOOTER */
 footer{
 text-align:center;
-padding:40px;
+padding:30px;
 color:#555;
-font-size:13px;
+font-size:12px;
 }
 
-/* ANIMATION */
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
+/* subtle divider feel (removes “floating sections”) */
+section + section{
+margin-top:-10px;
 }
 </style>
 </head>
@@ -246,12 +221,12 @@ to{opacity:1;transform:translateY(0);}
 </nav>
 
 <!-- HERO -->
-<section class="hero visible">
+<section class="hero visible" id="hero">
 
 <h1>We Build Business Systems That Scale Revenue</h1>
 
 <p>
-Custom CRM platforms, automation engines, and high-performance web systems designed to turn operations into structured growth.
+Custom CRMs, automation systems, and high-performance web platforms designed to turn operations into structured growth engines.
 </p>
 
 <div class="buttons">
@@ -270,22 +245,22 @@ Custom CRM platforms, automation engines, and high-performance web systems desig
 
 <div class="card">
 <h3>Custom Systems</h3>
-<p>Full business dashboards, CRMs, automation and workflow systems.</p>
+<p>Business dashboards and automation engines built for scale.</p>
 </div>
 
 <div class="card">
 <h3>CRM Platforms</h3>
-<p>Lead tracking, pipelines, revenue systems and reporting dashboards.</p>
+<p>Lead tracking, pipelines, revenue and reporting systems.</p>
 </div>
 
 <div class="card">
 <h3>Web Development</h3>
-<p>High-end websites built for conversion and scalability.</p>
+<p>High-conversion websites designed for real business growth.</p>
 </div>
 
 <div class="card">
 <h3>Marketing Systems</h3>
-<p>Funnels, automation and lead generation engines.</p>
+<p>Funnels and automation that generate consistent leads.</p>
 </div>
 
 </div>
@@ -301,7 +276,7 @@ Custom CRM platforms, automation engines, and high-performance web systems desig
 
 <div class="project">
 <h3>Rilukey CRM</h3>
-<p>Full pipeline + business operations system.</p>
+<p>Business pipeline + CRM operations system.</p>
 <a href="case-rilukey-crm.html">View Case Study</a>
 </div>
 
@@ -319,20 +294,8 @@ Custom CRM platforms, automation engines, and high-performance web systems desig
 
 <div class="project">
 <h3>Crypto Dashboard</h3>
-<p>Analytics and prediction system.</p>
+<p>Analytics + prediction system.</p>
 <a href="case-crypto-dashboard.html">View Case Study</a>
-</div>
-
-<div class="project">
-<h3>Rod Timber</h3>
-<p>Product + quote management system.</p>
-<a href="https://rodtimberproducts.co.za">Visit</a>
-</div>
-
-<div class="project">
-<h3>Elite Appliances</h3>
-<p>Service booking system.</p>
-<a href="https://eliteappliancetechnicians.co.za">Visit</a>
 </div>
 
 </div>
@@ -344,9 +307,7 @@ Custom CRM platforms, automation engines, and high-performance web systems desig
 
 <h2>Ready to Systemise Your Business?</h2>
 
-<p>
-Book a CRM demo and see how we transform operations into revenue systems.
-</p>
+<p>Book a CRM demo and see how we turn operations into revenue systems.</p>
 
 <br><br>
 
@@ -359,34 +320,32 @@ Book a CRM demo and see how we transform operations into revenue systems.
 </footer>
 
 <script>
-// SECTION REVEAL
+
+// section reveal (smooth cinematic flow)
 const sections = document.querySelectorAll("section");
 
-const sectionObserver = new IntersectionObserver(entries=>{
+const observer = new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add("visible");
 }
 });
-},{threshold:0.15});
-
-sections.forEach(s=>sectionObserver.observe(s));
-
-// PROJECT ANIMATION
-const projects = document.querySelectorAll(".project");
-
-const projectObserver = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-});
 },{threshold:0.2});
 
-projects.forEach((p,i)=>{
-p.style.transitionDelay = (i * 120) + "ms";
-projectObserver.observe(p);
+sections.forEach(sec=>observer.observe(sec));
+
+
+// hero compression (Apple-style scroll feel)
+const hero = document.getElementById("hero");
+
+window.addEventListener("scroll",()=>{
+if(window.scrollY > 100){
+hero.classList.add("shrink");
+}else{
+hero.classList.remove("shrink");
+}
 });
+
 </script>
 
 </body>
