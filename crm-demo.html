@@ -6,94 +6,54 @@
 <title>Empress CRM | Business System Solutions</title>
 
 <style>
-:root{
---bg:#000;
---green:#00ff9f;
---blue:#4FA1F6;
---text:#eaf2ff;
---panel:#0b0b0b;
---border:rgba(0,255,159,0.15);
-}
-
+:root{--bg:#000;--green:#00ff9f;--blue:#4FA1F6;--text:#eaf2ff;--panel:#0b0b0b;--border:rgba(0,255,159,0.15);} 
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui;}
-body{background:var(--bg);color:var(--text);}
-
-nav{display:flex;justify-content:space-between;padding:18px 30px;position:fixed;width:100%;top:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10;}
-nav a{color:white;text-decoration:none;margin-left:15px;}
-nav a:hover{color:var(--green);}
-
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 60px;}
-.hero h1{font-size:52px;background:linear-gradient(90deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero p{max-width:650px;margin-top:15px;color:#aaa;}
-.cta{margin-top:25px;padding:14px 26px;background:var(--green);color:#000;text-decoration:none;border-radius:10px;font-weight:700;}
-
-section{padding:80px 20px;max-width:1100px;margin:auto;}
-h2{color:var(--green);margin-bottom:20px;}
-
-.crm{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-.crm-header{background:#050505;padding:15px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;}
-.crm-body{display:grid;grid-template-columns:240px 1fr;min-height:500px;}
-
-.sidebar{border-right:1px solid var(--border);padding:15px;}
-.sidebar button{display:block;width:100%;margin-bottom:10px;padding:10px;background:#111;border:none;color:white;border-radius:6px;cursor:pointer;}
-.sidebar button:hover{background:var(--green);color:#000;}
-
-.content{padding:20px;}
-.hidden{display:none;}
-
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-.card{background:#111;padding:15px;border-radius:10px;border:1px solid var(--border);}
-.card h3{color:#aaa;font-size:13px;}
-.card p{font-size:20px;color:var(--green);margin-top:5px;}
-
-.pipeline{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-.stage{background:#0f0f0f;border:1px solid var(--border);padding:10px;border-radius:10px;min-height:200px;}
-.stage h4{margin-bottom:6px;color:var(--green);}
-
-.lead{background:#111;padding:8px;border-radius:6px;margin-top:6px;font-size:13px;cursor:pointer;}
-.lead small{display:block;color:#aaa;font-size:11px;margin-top:3px;}
-
-.table{margin-top:20px;width:100%;border-collapse:collapse;}
-.table th,.table td{border-bottom:1px solid #222;padding:8px;font-size:13px;text-align:left;}
-
-.final-cta{text-align:center;}
-.final-cta a{margin-top:20px;display:inline-block;padding:14px 28px;background:var(--green);color:#000;text-decoration:none;border-radius:10px;font-weight:700;}
-footer{text-align:center;padding:40px;color:#555;}
-
+body{background:var(--bg);color:var(--text);} 
+nav{display:flex;justify-content:space-between;padding:18px 30px;position:fixed;width:100%;top:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:10;} 
+nav a{color:white;text-decoration:none;margin-left:15px;} 
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 60px;} 
+.hero h1{font-size:48px;background:linear-gradient(90deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;} 
+.cta{margin-top:25px;padding:14px 26px;background:var(--green);color:#000;text-decoration:none;border-radius:10px;font-weight:700;} 
+section{padding:80px 20px;max-width:1100px;margin:auto;} 
+.crm{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;} 
+.crm-header{background:#050505;padding:15px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;} 
+.crm-body{display:grid;grid-template-columns:240px 1fr;min-height:500px;} 
+.sidebar{border-right:1px solid var(--border);padding:15px;} 
+.sidebar button{width:100%;margin-bottom:10px;padding:10px;background:#111;border:none;color:white;border-radius:6px;cursor:pointer;} 
+.sidebar button:hover{background:var(--green);color:#000;} 
+.content{padding:20px;} 
+.hidden{display:none;} 
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;} 
+.card{background:#111;padding:15px;border-radius:10px;border:1px solid var(--border);} 
+.card p{font-size:18px;color:var(--green);} 
+.pipeline{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;} 
+.stage{background:#0f0f0f;border:1px solid var(--border);padding:10px;border-radius:10px;} 
+.lead{background:#111;padding:8px;border-radius:6px;margin-top:6px;font-size:13px;cursor:pointer;} 
+.table{margin-top:20px;width:100%;border-collapse:collapse;} 
+.table th,.table td{border-bottom:1px solid #222;padding:8px;font-size:13px;text-align:left;} 
+.email-box textarea{width:100%;height:80px;background:#111;border:1px solid #222;color:white;border-radius:6px;padding:8px;margin-top:8px;} 
+.btn{margin-top:10px;padding:10px;background:var(--green);border:none;color:#000;border-radius:6px;cursor:pointer;} 
 </style>
 </head>
 <body>
 
-<nav>
-<div><b>Empress CRM</b></div>
-<div>
-<a href="#demo">Demo</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
+<nav><div><b>Empress CRM</b></div></nav>
 
 <div class="hero">
-<h1>Business CRM Systems That Scale Your Operations</h1>
-<p>Track leads, manage customers, and visualise your entire sales pipeline with real-time business insights.</p>
-<a class="cta" href="#demo">Try Live Demo</a>
+<h1>CRM System Demo</h1>
+<a class="cta" href="#demo">Open Demo</a>
 </div>
 
 <section id="demo">
-<h2>Live CRM Demo</h2>
-
 <div class="crm">
-<div class="crm-header">
-<span id="viewTitle">Dashboard</span>
-<span style="color:var(--green);">LIVE SIMULATION</span>
-</div>
-
+<div class="crm-header"><span id="viewTitle">Dashboard</span><span style="color:var(--green);">LIVE DEMO</span></div>
 <div class="crm-body">
 
 <div class="sidebar">
 <button onclick="showView('dashboard')">Dashboard</button>
 <button onclick="showView('leads')">Leads</button>
 <button onclick="showView('pipeline')">Pipeline</button>
-<button onclick="showView('reports')">Reports</button>
+<button onclick="showView('emails')">Emails</button>
 </div>
 
 <div class="content">
@@ -101,31 +61,33 @@ footer{text-align:center;padding:40px;color:#555;}
 <!-- DASHBOARD -->
 <div id="dashboardView">
 <div class="cards">
-<div class="card"><h3>Total Leads</h3><p id="totalLeads">0</p></div>
-<div class="card"><h3>Active Deals</h3><p id="activeDeals">0</p></div>
-<div class="card"><h3>Closed Deals</h3><p id="closedDeals">0</p></div>
-<div class="card"><h3>Revenue</h3><p id="revenue">R0</p></div>
+<div class="card"><p id="totalLeads"></p><small>Total Leads</small></div>
+<div class="card"><p id="revenue"></p><small>Revenue</small></div>
 </div>
 </div>
 
-<!-- LEADS TABLE -->
+<!-- LEADS -->
 <div id="leadsView" class="hidden">
-<table class="table">
-<thead><tr><th>Name</th><th>Email</th><th>Status</th><th>Contact Date</th></tr></thead>
-<tbody id="leadsTable"></tbody>
-</table>
+<table class="table"><thead><tr><th>Name</th><th>Status</th><th>Email</th></tr></thead><tbody id="leadsTable"></tbody></table>
 </div>
 
 <!-- PIPELINE -->
-<div id="pipelineView" class="hidden">
-<div class="pipeline" id="pipelineContainer"></div>
+<div id="pipelineView" class="hidden"><div id="pipelineContainer" class="pipeline"></div></div>
+
+<!-- EMAIL SYSTEM -->
+<div id="emailsView" class="hidden">
+<h3>Select Lead</h3>
+<select id="leadSelect"></select>
+
+<div class="email-box">
+<textarea id="emailText" placeholder="Type email..."></textarea>
+<button class="btn" onclick="sendEmail()">Send Email</button>
 </div>
 
-<!-- REPORTS -->
-<div id="reportsView" class="hidden">
+<h3 style="margin-top:20px;">Email History</h3>
 <table class="table">
-<thead><tr><th>Client</th><th>Closed Date</th><th>Value</th></tr></thead>
-<tbody id="closedTable"></tbody>
+<thead><tr><th>Date</th><th>Message</th><th>Reply</th></tr></thead>
+<tbody id="emailHistory"></tbody>
 </table>
 </div>
 
@@ -134,71 +96,65 @@ footer{text-align:center;padding:40px;color:#555;}
 </div>
 </section>
 
-<section class="final-cta" id="contact">
-<h2>Get Your Custom CRM Built</h2>
-<p style="color:#aaa;">Book a consultation to implement a system like this in your business.</p>
-<a href="https://wa.me/27733086462">Chat on WhatsApp</a>
-</section>
-
-<footer>© 2026 Empress Creations</footer>
-
 <script>
 
-const leads = [
-{name:"ABC Construction",email:"abc@gmail.com",status:"new",date:"2026-03-01",value:0},
-{name:"Elite Repairs",email:"elite@gmail.com",status:"contacted",date:"2026-03-05",value:0},
-{name:"Rilukey Group",email:"info@rilukey.com",status:"proposal",date:"2026-03-10",value:12000},
-{name:"GreenTech SA",email:"green@gmail.com",status:"closed",date:"2026-03-15",value:25000}
+const leads=[
+{name:"ABC Construction",email:"abc@gmail.com",status:"new",value:0,history:[]},
+{name:"Elite Repairs",email:"elite@gmail.com",status:"contacted",value:0,history:[]},
+{name:"Rilukey Group",email:"info@rilukey.com",status:"proposal",value:12000,history:[]},
+{name:"GreenTech SA",email:"green@gmail.com",status:"closed",value:25000,history:[]}
 ];
 
-function showView(view){
-document.querySelectorAll('.content > div').forEach(v=>v.classList.add('hidden'));
-document.getElementById(view+'View').classList.remove('hidden');
-document.getElementById('viewTitle').innerText=view.charAt(0).toUpperCase()+view.slice(1);
-}
+function showView(v){document.querySelectorAll('.content>div').forEach(d=>d.classList.add('hidden'));document.getElementById(v+'View').classList.remove('hidden');document.getElementById('viewTitle').innerText=v;}
 
 function render(){
 
-// DASHBOARD
-const total = leads.length;
-const closed = leads.filter(l=>l.status==='closed');
-const active = leads.filter(l=>l.status!=='closed');
-const revenue = closed.reduce((sum,l)=>sum+l.value,0);
+// dashboard
+let revenue=leads.filter(l=>l.status==='closed').reduce((a,b)=>a+b.value,0);
+document.getElementById('totalLeads').innerText=leads.length;
+document.getElementById('revenue').innerText='R'+revenue;
 
-document.getElementById('totalLeads').innerText = total;
-document.getElementById('activeDeals').innerText = active.length;
-document.getElementById('closedDeals').innerText = closed.length;
-document.getElementById('revenue').innerText = 'R'+revenue.toLocaleString();
+// leads table
+let table='';
+leads.forEach((l,i)=>{table+=`<tr><td>${l.name}</td><td>${l.status}</td><td>${l.email}</td></tr>`});
+document.getElementById('leadsTable').innerHTML=table;
 
-// LEADS TABLE
-let tableHTML='';
-leads.forEach(l=>{
-tableHTML+=`<tr><td>${l.name}</td><td>${l.email}</td><td>${l.status}</td><td>${l.date}</td></tr>`;
-});
-document.getElementById('leadsTable').innerHTML=tableHTML;
+// pipeline
+let stages=['new','contacted','proposal','closed'];
+let html='';
+stages.forEach(s=>{html+=`<div class="stage"><b>${s}</b>`;
+leads.filter(l=>l.status===s).forEach(l=>{html+=`<div class="lead">${l.name}</div>`});
+html+='</div>';});
+document.getElementById('pipelineContainer').innerHTML=html;
 
-// PIPELINE
-const stages=['new','contacted','proposal','closed'];
-let pipelineHTML='';
-
-stages.forEach(stage=>{
-pipelineHTML+=`<div class="stage"><h4>${stage.toUpperCase()}</h4>`;
-leads.filter(l=>l.status===stage).forEach(l=>{
-pipelineHTML+=`<div class="lead">${l.name}<small>${l.email}</small></div>`;
-});
-pipelineHTML+='</div>';
-});
-
-document.getElementById('pipelineContainer').innerHTML=pipelineHTML;
-
-// CLOSED DEALS
-let closedHTML='';
-closed.forEach(l=>{
-closedHTML+=`<tr><td>${l.name}</td><td>${l.date}</td><td>R${l.value.toLocaleString()}</td></tr>`;
-});
-document.getElementById('closedTable').innerHTML=closedHTML;
+// dropdown
+let select='';
+leads.forEach((l,i)=>{select+=`<option value="${i}">${l.name}</option>`});
+document.getElementById('leadSelect').innerHTML=select;
 
 }
+
+function sendEmail(){
+let i=document.getElementById('leadSelect').value;
+let msg=document.getElementById('emailText').value;
+if(!msg)return;
+
+let date=new Date().toLocaleString();
+let reply=Math.random()>0.5?"Interested, please send quote":"No response yet";
+
+leads[i].history.push({date,msg,reply});
+renderHistory(i);
+}
+
+function renderHistory(i){
+let html='';
+leads[i].history.forEach(h=>{
+html+=`<tr><td>${h.date}</td><td>${h.msg}</td><td>${h.reply}</td></tr>`;
+});
+document.getElementById('emailHistory').innerHTML=html;
+}
+
+document.getElementById('leadSelect')?.addEventListener('change',e=>renderHistory(e.target.value));
 
 render();
 
